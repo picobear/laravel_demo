@@ -38,3 +38,5 @@ Route::get('/user/message', 'MessageController@index')->name('message');
 Route::post('/user/message', 'MessageController@store');
 
 Route::get('/user/message/list', 'MessageController@list');
+Route::get('/user/message/reply/{id}', 'MessageController@reply');
+Route::post('/user/message/reply', 'MessageController@reply_post')->name('reply_message');

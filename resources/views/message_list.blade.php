@@ -18,7 +18,7 @@
                                 <label for="login_name" class="col-md-3 col-form-label">{{ __($list->subject) }}</label>
 
                                 <div class="col-md-8 col-form-label">
-                                    {{ __($list->message) }}
+                                   <a href="./reply/{{ $list->id }}">{{ __($list->message) }}</a> 
                                 </div>
                             </div>
                         @endforeach

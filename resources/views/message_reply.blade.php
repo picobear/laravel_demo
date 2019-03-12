@@ -5,31 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Message Box') }}</div>
+                <div class="card-header">{{ __('Message Reply') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('message') }}">
+                    <form method="POST" action="{{ route('reply_message') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="login_name" class="col-md-3 col-form-label text-md-right">{{ __('Subject') }}</label>
 
                             <div class="col-md-8">
-                                <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject" value="{{ old('subject') }}" required autofocus>
-
-                                @if ($errors->has('subject'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('subject') }}</strong>
-                                    </span>
-                                @endif
+                                {{ $item[0]->subject }}
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="message" class="col-md-3 col-form-label text-md-right">{{ __('Message') }}</label>
+                            <label for="login_name" class="col-md-3 col-form-label text-md-right">{{ __('Message') }}</label>
 
                             <div class="col-md-8">
-                            	<textarea class="col-md-12" name="message" rows="8"></textarea>
+                            	{{ $item[0]->message }}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="reply_message" class="col-md-3 col-form-label text-md-right">{{ __('Reply Message') }}</label>
+
+                            <div class="col-md-8">
+                                <textarea class="col-md-12" name="reply_message" rows="8"></textarea>
 
                             </div>
                         </div>
@@ -41,6 +45,8 @@
                                 </button>
                             </div>
                         </div>
+
+                        <input type="hidden" name="id" value="{{ $item[0]->id }}">
                     </form>
                 </div>
             </div>
