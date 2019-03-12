@@ -17,7 +17,7 @@ class MessageController extends Controller
     }
 
     public function index(){
-    	return view('message'); //->with('title','my message')->with('posts', "aaaa");
+    	return view('message'); 
     }
 
 
@@ -27,6 +27,13 @@ class MessageController extends Controller
 		);
 
     	
-    	return $id; 
+    	return "message id : ".$id; 
+    }
+
+
+    public function list(){
+    	$lists = DB::table('messages')->select('uid', 'subject', 'message')->get();
+    	//dd($lists->toArray());
+    	return view('message_list', array('lists' => $lists->toArray()));
     }
 }
