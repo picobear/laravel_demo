@@ -50,7 +50,11 @@ class LoginController extends Controller
     {
 
         if($this->guard()->attempt(['username' => $request->login_name, 'password' => $request->password], $request->has('remember'))){
-            $this->sendLoginResponse($request);
+            $request->session()->regenerate();
+
+            $this->clearLoginAttempts($request);
+            redirect($this->redirectPath());
+            //$this->sendLoginResponse($request);
         } elseif($this->guard()->attempt(['mobile' => $request->login_name, 'password' => $request->password], $request->has('remember'))){
             $this->sendLoginResponse($request);
         }

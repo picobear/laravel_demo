@@ -34,6 +34,6 @@ Route::post('/user/password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/user/message', 'MessageController@index');
+Route::get('/user/message', 'MessageController@index')->name('message');
 Route::post('/user/message', 'MessageController@store');
 Route::delete('/user/message/{message}', 'MessageController@destroy');
