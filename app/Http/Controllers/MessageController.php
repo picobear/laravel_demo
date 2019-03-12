@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-//use Illuminate\Database\Eloquent\Model
 use DB;
 
 
@@ -33,7 +32,6 @@ class MessageController extends Controller
 
     public function list(){
     	$lists = DB::table('messages')->select('id', 'uid', 'subject', 'message')->get();
-    	//dd($lists->toArray());
     	return view('message_list', array('lists' => $lists->toArray()));
     }
 
