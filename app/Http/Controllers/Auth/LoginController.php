@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/message';
+    protected $redirectTo = '/user/message/list';
 
     /**
      * Create a new controller instance.
@@ -50,13 +50,11 @@ class LoginController extends Controller
     {
 
         if($this->guard()->attempt(['username' => $request->login_name, 'password' => $request->password], $request->has('remember'))){
-            $request->session()->regenerate();
-
-            $this->clearLoginAttempts($request);
-            redirect($this->redirectPath());
-            //$this->sendLoginResponse($request);
+            $this->sendLoginResponse($request);
+            return true;
         } elseif($this->guard()->attempt(['mobile' => $request->login_name, 'password' => $request->password], $request->has('remember'))){
             $this->sendLoginResponse($request);
+            return true;
         }
 
         return false;

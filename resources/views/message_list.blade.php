@@ -5,13 +5,21 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                <div>
+                    <a href="./">新增留言</a>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+
                 <div class="card-header">{{ __('Message List') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('message') }}">
                         @csrf
-
-                        
 
                         @foreach ($lists as $list)
                             <div class="form-group row">
