@@ -57,11 +57,15 @@ class LoginController extends Controller
             return true;
         }
 
+        
         return false;
     }
 
 
-    
+    //protected function guard($user)
+    //{
+    //    return Auth::guard($user);
+    //}
 
 
     /**
